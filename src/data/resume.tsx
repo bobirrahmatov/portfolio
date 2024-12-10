@@ -13,7 +13,7 @@ export const DATA = {
     "Full-stack developer with a Web3 obsession. I turn ideas into code, make sense of data, and build dashboards with a touch of magic. Builder, learner, and open-source contributor.",
   summary:
     "I'm Bobir (Bob) Rahmatov, a developer with a passion for problem-solving and innovation. With experience in full-stack development and Web3, I specialize in creating scalable applications and insightful dashboards powered by data. Whether it’s building responsive user interfaces or integrating blockchain solutions, I enjoy tackling challenges that push the boundaries of technology. When I’m not coding, I’m exploring new trends in tech or contributing to open-source projects.",
-  avatarUrl: "/me.png",
+  avatarUrl: "/avatar-main.png",
   skills: [
     "React",
     "Next.js",
