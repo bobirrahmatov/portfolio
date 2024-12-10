@@ -10,6 +10,7 @@ import Image from "next/image";
 import Markdown from "react-markdown";
 import { Icons } from "./icons";
 import CustomVideoDialog from "./magicui/custom-video-dialog";
+import Link from "next/link";
 
 interface Props {
   title: string;
@@ -20,6 +21,11 @@ interface Props {
   dates?: string;
   tags: readonly string[];
   link?: string;
+  links?: readonly {
+    icon: React.ReactNode;
+    type: string;
+    href?: string;
+  }[];
   image?: string | null;
   video?: string;
 }
@@ -33,6 +39,7 @@ export function ClientWorksCard({
   dates,
   tags,
   link,
+  links,
   image,
   video,
 }: Props) {
@@ -118,6 +125,18 @@ export function ClientWorksCard({
             <Icons.setting className="size-4" />
             {worktype}
           </Badge>
+        )}
+        {links && links.length > 0 && (
+          <div className="flex flex-row flex-wrap items-start gap-1">
+            {links?.map((link, idx) => (
+              <Link href={link?.href || ""} key={idx} target="_blank">
+                <Badge className="flex gap-2 px-2 py-1 text-[10px] ml-1 bg-blue-400 hover:bg-blue-500 cursor-pointer">
+                  {link.icon}
+                  {link.type}
+                </Badge>
+              </Link>
+            ))}
+          </div>
         )}
         {testimonial && (
           <CustomVideoDialog

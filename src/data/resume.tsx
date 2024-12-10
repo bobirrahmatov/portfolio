@@ -67,14 +67,14 @@ export const DATA = {
         name: "Youtube",
         url: "https://www.youtube.com/@bobrahmatov",
         icon: Icons.youtube,
-        navbar: true,
+        navbar: false,
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:bobirrahmatof@gmail.com?subject=Potential%20Project%20Request&body=Hello%20Bob,%0D%0A%0D%0AI%20am%20interested%20in%20discussing%20a%20potential%20project%20with%20you.%20Here%20are%20the%20details:%0D%0A%0D%0A[Add%20your%20project%20details%20here]%0D%0A%0D%0AThank%20you,%0D%0A[Your%20Name]",
         icon: Icons.email,
 
-        navbar: false,
+        navbar: true,
       },
     },
   },

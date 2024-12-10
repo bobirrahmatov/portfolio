@@ -107,7 +107,7 @@ export default function Page() {
               </Badge>
               <Badge
                 variant="outline"
-                className="hidden md:flex cursor-pointer group"
+                className="md:flex cursor-pointer group"
               >
                 <Code className="size-4 mr-1 group-hover:text-red-500" />
                 {DATA.newprojects}
@@ -159,11 +159,11 @@ export default function Page() {
       </section>
 
       <section id="projects">
-        <div className="flex flex-col items-center">
-          <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm mb-5">
-            Featured Projects
-          </div>
-          <BlurFade delay={BLUR_FADE_DELAY * 11}>
+        <BlurFade delay={BLUR_FADE_DELAY * 11}>
+          <div className="flex flex-col items-center">
+            <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm mb-5">
+              Featured Projects
+            </div>
             <Tabs
               defaultValue="myworks"
               className="flex flex-col items-center justify-center w-full"
@@ -260,6 +260,7 @@ export default function Page() {
                               image={project.image}
                               video={project.video}
                               fatures={project.features}
+                              links={project.links}
                               testimonial={project.testimonial}
                             />
                           </BlurFade>
@@ -270,8 +271,9 @@ export default function Page() {
                 </BlurFade>
               </TabsContent>
             </Tabs>
-          </BlurFade>
-        </div>
+          </div>
+        </BlurFade>
+
       </section>
       <section id="blogs">
         <div className="space-y-12 w-full py-12">
@@ -340,6 +342,8 @@ export default function Page() {
                 {" "}
                 <Link
                   href={DATA.contact.email}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-500 hover:underline"
                 >
                   an email
@@ -348,6 +352,8 @@ export default function Page() {
                 {" "}
                 <Link
                   href={DATA.contact.social.X.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-blue-500 hover:underline"
                 >
                   X
@@ -359,6 +365,6 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
-    </main>
+    </main >
   );
 }

@@ -1,29 +1,68 @@
+import { Icons } from "@/components/icons";
+
 export const CLIENTWORKS = [
   {
-    title: "BOXCHAT - One chat for all ai models",
+    title: "gm3 - Web3 Business Solutions",
     dates: "9th Sep 2024 - 22nd Sep 2024",
-    worktype: "Fullstack",
+    worktype: "Website, CMS",
     testimonial:
-      "https://firebasestorage.googleapis.com/v0/b/archives-63571.appspot.com/o/portfolio%2Ftestimonials%2Fboxchat-testimonial.mp4?alt=media&token=51be6968-e40f-4074-a0f7-026f98930671",
+      "",
     featured: true,
     description:
-      "BOXCHAT is a SAAS that lets you interact with websites, PDFs, and documents in real-time. It provides quick answers and insights directly from your chosen sources, it gives multiple ai models feature to sync your questions and get different responses at a time.",
+      "gm3 - a sleek and responsive website with advanced CMS functionality and real-time data management. Built with a focus on performance, scalability, and user-centric design to enhance digital experiences.",
     features:
-      "Playground feature like **Vercel**. Chat feature like **ChatGPT**. Text to image generation.",
+      "",
     technologies: [
       "Next.js",
       "Typescript",
-      "Postgres",
-      "Upstash rag-chat sdk",
-      "Vercel ai sdk",
-      "Supabase",
+      "CMS",
+      "Framer",
       "TailwindCSS",
-      "Acternity UI",
       "Shadcn UI",
-      "Magic UI",
+    ],
+    links: [
+      {
+        type: "Website",
+        href: "www.gm3.io",
+        icon: <Icons.globe className="size-3" />,
+      },
     ],
     image: "",
     video:
-      "https://firebasestorage.googleapis.com/v0/b/archives-63571.appspot.com/o/portfolio%2Fboxchat-preview.mp4?alt=media&token=e18c270b-dbce-4588-838e-2162c2de4bd8",
+      "https://firebasestorage.googleapis.com/v0/b/portfolio-e69c5.firebasestorage.app/o/Safe_Gm3.mp4?alt=media&token=4dc1c14e-367f-49a8-83b5-6e10eeacb43f",
+  },
+  {
+    title: "Web3 NFT-ETH Exchange dApp",
+    dates: "10th Oct 2024 - 17th Oct 2024",
+    worktype: "dApp - Web3",
+    testimonial:
+      "",
+    featured: true,
+    description:
+      "This dApp project involved creating a Web3 application for exchanging ERC-721 NFTs for ETH using a smart contract. The platform ensures secure transactions, allows owner-controlled payout settings, and includes a streamlined user interface for approval and exchange processes.",
+    features:
+      "",
+    technologies: [
+      "Solidity",
+      "Next.js",
+      "Typescript",
+      "React",
+      "Wagmi",
+      "Hardhat",
+      "TailwindCSS",
+      "Web3Modal",
+      "Viem",
+      "Pino",
+    ],
+    links: [
+      {
+        type: "Website",
+        href: "https://cpx-exchange-v3.vercel.app/",
+        icon: <Icons.globe className="size-3" />,
+      },
+    ],
+    image: "",
+    video:
+      "https://firebasestorage.googleapis.com/v0/b/portfolio-e69c5.firebasestorage.app/o/clownpunk.mp4?alt=media&token=6efad4bd-c70d-499b-bee2-db81222e8de2",
   },
 ];
