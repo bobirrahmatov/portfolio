@@ -14,11 +14,16 @@ export const CLIENTWORKS = [
       "",
     technologies: [
       "Next.js",
+      "React",
       "Typescript",
       "CMS",
       "Framer",
       "TailwindCSS",
-      "Shadcn UI",
+      "Cal.com",
+      "Zod",
+      "Supabase",
+      "Prisma",
+      "Neural Networks"
     ],
     links: [
       {
