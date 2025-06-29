@@ -1,0 +1,154 @@
+---
+title: "Best Practices for Creating Efficient Tableau Calculations"
+publishedAt: "2025-06-28"
+summary: "A developer-focused guide to optimizing Tableau calculations using CASE, REGEXP, and efficient structuring to improve performance."
+readTime: 7
+featured: true
+icon: "/assets/blog-posts/tableau-series/01-tableau-software.svg"
+---
+
+# Best Practices for Creating Efficient Tableau Calculations
+
+> Applies to: Tableau Cloud, Tableau Desktop, Tableau Public, Tableau Server
+
+This post outlines advanced, developer-focused tips to optimize performance when creating calculated fields in Tableau.
+
+---
+
+## 🚫 Avoid Repeating Calculated Fields
+
+Reusing a calculated field multiple times inside another calculation triggers multiple evaluations and harms performance.
+
+### Example: Inefficient Use
+
+```tableau
+RIGHT([Twitter Handle], LEN([Twitter Handle]) -1)
+```
+
+> References `[Twitter Handle]` twice.
+
+### Improved Version
+
+```tableau
+MID([Twitter Handle], 2)
+```
+
+> Only references the field once.
+
+---
+
+## 🧠 Tip 1: Use `CASE` Instead of Repeated `IF` Checks
+
+Avoid referencing the same field multiple times in an `IF` statement.
+
+### Inefficient
+
+```tableau
+IF [Person (calc)] = 'Henry Wilson'
+OR [Person (calc)] = 'Jane Johnson'
+...
+THEN 'Lead'
+```
+
+### Efficient
+
+```tableau
+CASE [Person (calc)]
+  WHEN 'Henry Wilson' THEN 'Lead'
+  WHEN 'Jane Johnson' THEN 'Lead'
+  ...
+END
+```
+
+Or, create a **group** to categorize users instead.
+
+---
+
+## 🔍 Tip 2: Replace Multiple `CONTAINS`/`STARTSWITH`/`ENDSWITH` with `REGEXP`
+
+Regular expressions simplify and consolidate string logic.
+
+### Original
+
+```tableau
+IF CONTAINS([Segment (calc)], 'UNKNOWN')
+OR ...
+THEN 'UNKNOWN'
+```
+
+### Improved
+
+```tableau
+IF REGEXP_MATCH([Segment (calc)], 'UNKNOWN|LEADER|...') THEN 'UNKNOWN'
+```
+
+- Use `^` for `STARTSWITH`
+- Use `$` for `ENDSWITH`
+
+---
+
+## ✂️ Tip 3: Use `REGEXP` for String Manipulation
+
+String logic can often be shortened and optimized.
+
+### Protocol Removal
+
+```tableau
+REGEXP_REPLACE([Server], "^(http://|https://|tcp:|\\)", "")
+```
+
+### Extracting from IP
+
+```tableau
+REGEXP_EXTRACT([Server], "\.([^\.]*)\.")
+```
+
+---
+
+## ❌ Tip 4: Avoid Sets in Calculations
+
+Sets are expensive when used in logic. Use `CASE` or `GROUP` instead.
+
+### Original
+
+```tableau
+IF ISNULL([Customer Name]) OR [Top Customers (set)] THEN ...
+```
+
+### Efficient
+
+```tableau
+CASE [Customer Name]
+  WHEN 'Henry Wilson' THEN TRUE
+  ...
+  ELSE FALSE
+END
+```
+
+---
+
+## ⚠️ Tip 5: Don’t Use Sets to Group Data
+
+Sets are for comparisons, not grouping. Use **Groups** for classification.
+
+### Bad
+
+```tableau
+IF [Americas Set] THEN "Americas"
+...
+```
+
+### Good
+
+Use Tableau’s Grouping feature instead.
+
+---
+
+## 🔚 Final Advice
+
+For high-performance dashboards:
+
+- Use each calculated field once per formula.
+- Replace logical repetition with `CASE` or `REGEXP`.
+- Use native Tableau features like Groups for logical categories.
+- Avoid sets in favor of calculated fields or groups for large-scale performance.
