@@ -1,0 +1,142 @@
+---
+title: "Setting Up Your SQL Environment and Creating Your First Table"
+publishedAt: "2025-05-02"
+summary: "Get hands-on with SQL by setting up a simple SQLite environment. Learn to create your first database and define a table with essential data types and constraints."
+readTime: "9 mins"
+featured: false
+icon: "/assets/blog-posts/sql-series/02-sql-database.png"
+---
+
+## Getting Your Hands Dirty: Setting Up a SQL Environment
+
+To truly learn SQL, you need a database to practice with. For this series, we'll use **SQLite**, a fantastic, lightweight, and serverless relational database. It's perfect for learning because it requires minimal setup – no complex server installations, just a single file!
+
+### Why SQLite for Learning?
+
+- **Zero Configuration:** No server to set up, no complex permissions. Just download a single executable or library.
+- **File-Based:** An entire SQLite database is a single file on your disk. Easy to move, share, and backup.
+- **SQL Standard Compliant:** While lightweight, it supports most standard SQL features, making your learned skills highly transferable.
+- **Widely Used:** Despite its simplicity, SQLite is used in countless applications (web browsers, mobile apps, embedded systems).
+
+### Setting Up SQLite (Command Line or GUI)
+
+**Option A: Command Line (Recommended for simplicity)**
+
+1.  **Download SQLite:** Visit the [official SQLite download page](https://www.sqlite.org/download.html). Look for "Precompiled Binaries for Windows" (or Mac/Linux). Download the `sqlite-tools-win32-x86-...zip` (or equivalent for your OS).
+2.  **Extract:** Unzip the downloaded file. You'll find `sqlite3.exe` (or `sqlite3` on Mac/Linux) inside.
+3.  **Open Command Prompt/Terminal:** Navigate to the folder where you extracted `sqlite3.exe`.
+4.  **Launch SQLite:** Type `sqlite3 mydatabase.db` and press Enter. This will create a new database file named `mydatabase.db` (or open it if it already exists) and put you into the SQLite command-line interface.
+
+    ```bash
+    # Example command line output
+    C:\path\to\sqlite-tools> sqlite3 mydatabase.db
+    SQLite version 3.45.1 2024-01-30 16:01:20
+    Enter ".help" for usage hints.
+    sqlite>
+    ```
+
+    ![SQLite Command Line Interface](/assets/blog-posts/sql-series/02-sqlite-cli.png)
+
+**Option B: SQLite Browser (GUI - graphical user interface)**
+
+If you prefer a visual tool, `DB Browser for SQLite` is excellent:
+
+1.  **Download DB Browser for SQLite:** Visit [sqlitebrowser.org/dl/](https://sqlitebrowser.org/dl/) and download the installer for your OS.
+2.  **Install and Launch:** Follow the installation steps.
+3.  **Create New Database:** In DB Browser, go to `File` > `New Database...`. Choose a location and name for your `.db` file (e.g., `mydatabase.db`).
+
+    ![DB Browser for SQLite Interface](/assets/blog-posts/sql-series/02-sqlite-browser.png)
+    _DB Browser for SQLite, a user-friendly graphical interface for SQLite databases._
+
+Throughout this series, I'll provide SQL queries that work in both the command line and DB Browser's "Execute SQL" tab.
+
+## Defining Your First Table: The `CREATE TABLE` Statement
+
+Now that your environment is ready, let's create our first table. This is where **DDL (Data Definition Language)** comes in. We'll create a `Customers` table.
+
+```sql
+CREATE TABLE Customers (
+    CustomerID INTEGER PRIMARY KEY,
+    FirstName TEXT NOT NULL,
+    LastName TEXT NOT NULL,
+    Email TEXT UNIQUE,
+    PhoneNumber TEXT,
+    DateOfBirth DATE
+);
+```
+
+---
+
+## Explanation of the `CREATE TABLE` Statement
+
+Let's break down what each part means:
+
+### Statement Structure
+
+- `CREATE TABLE Customers`: Tells the database to create a new table named `Customers`.
+- `(...)`: Parentheses enclose the column definitions.
+- Each line inside defines a column in the format: `ColumnName DataType Constraint`.
+
+### Common SQL Data Types
+
+- `INTEGER`: Stores whole numbers (e.g., `1`, `100`, `-5`).
+- `TEXT`: Stores character strings (e.g., `"John Doe"`). Equivalent to `VARCHAR` in other databases.
+- `REAL`: Stores floating-point numbers. Equivalent to `FLOAT` or `DOUBLE`.
+- `DATE`: Stores dates in `YYYY-MM-DD` format.
+- `BOOLEAN`: Stores true/false values. In SQLite, usually represented as `0` (false) or `1` (true).
+
+### Common SQL Constraints
+
+- **PRIMARY KEY**:
+
+  - Uniquely identifies each record in a table.
+  - Automatically enforces `NOT NULL` and `UNIQUE`.
+  - A table can only have one primary key.
+  - In SQLite, `INTEGER PRIMARY KEY` creates an auto-incrementing column.
+
+- **NOT NULL**: Ensures that the column cannot have empty (`NULL`) values.
+
+- **UNIQUE**: Ensures all values in the column are different. Useful for columns like `Email`.
+
+- **DEFAULT**: Assigns a default value if none is provided during insertion.  
+  _Example:_ `Age INTEGER DEFAULT 18`
+
+- **CHECK**: Enforces that a column’s value meets a specific condition.  
+  _Example:_ `CHECK (Age >= 18)`
+
+---
+
+## Executing Your `CREATE TABLE` Statement
+
+### In SQLite Command Line:
+
+1. Type the full `CREATE TABLE` statement line by line.
+2. Press **Enter** after each line.
+3. End with a semicolon `;` and press **Enter**.
+
+```bash
+sqlite> CREATE TABLE Customers (
+   ...> CustomerID INTEGER PRIMARY KEY,
+   ...> FirstName TEXT NOT NULL,
+   ...> LastName TEXT NOT NULL,
+   ...> Email TEXT UNIQUE,
+   ...> PhoneNumber TEXT,
+   ...> DateOfBirth DATE
+   ...> );
+sqlite>
+```
+
+If successful, you’ll simply return to the `sqlite>` prompt with no errors.
+
+### In DB Browser for SQLite:
+
+1. Go to the **"Execute SQL"** tab.
+2. Paste your `CREATE TABLE` statement.
+3. Click **"Execute SQL"** (the play ▶️ button).
+4. Open the **"Database Structure"** tab to confirm the `Customers` table was created.
+
+---
+
+## ✅ Conclusion: Database Ready!
+
+You've successfully set up your SQL environment with SQLite and created your very first table! Understanding **data types** and **constraints** is foundational to building reliable databases.

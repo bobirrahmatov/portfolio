@@ -1,0 +1,146 @@
+---
+title: "10 Mind-Blowing Coding Hacks You’ll Wish You Knew Sooner"
+publishedAt: "2025-06-21"
+summary: "Explore 10 clever coding tricks that streamline your workflow, enhance code readability, and improve developer productivity—compiled for modern engineers looking to level up."
+readTime: "6 mins"
+featured: true
+icon: "/assets/blog-posts/coding-hacks/01-coding-hacks.png"
+---
+
+## A Developer’s Shortcut Toolkit
+
+Even the most seasoned developers occasionally come across small snippets of code that leave them thinking: _“Wait, that actually works?”_ This post brings you **10 practical and surprising coding hacks** across JavaScript, Python, and more that can save time, reduce boilerplate, and even impress your team.
+
+Let’s get right to it.
+
+---
+
+## 1. Destructure Objects Like a Pro
+
+```js
+const user = { name: "Alice", age: 30, role: "Admin" };
+const { name, ...rest } = user;
+console.log(name); // Alice
+console.log(rest); // { age: 30, role: "Admin" }
+```
+
+This pattern is useful for extracting specific values while keeping the remainder intact for further use or passing downstream.
+
+---
+
+## 2. Use Double Bitwise NOT (`~~`) for Fast Integer Conversion
+
+```js
+console.log(~~"42"); // 42
+console.log(~~3.14); // 3
+```
+
+It’s faster than `parseInt()` and cleaner than `Math.floor()` when truncating positive numbers.
+
+> ⚠️ Use carefully—this doesn’t work well with large numbers or negative floats.
+
+---
+
+## 3. Quickly Check for Empty Objects
+
+```js
+const isEmpty = (obj) => Object.keys(obj).length === 0;
+```
+
+This one-liner eliminates the need for `for...in` loops or external libraries when checking empty states.
+
+---
+
+## 4. Use Array `at()` for Clean Reverse Indexing
+
+```js
+const items = [10, 20, 30, 40];
+console.log(items.at(-1)); // 40
+```
+
+No more messy `arr[arr.length - 1]` when grabbing from the end of an array.
+
+---
+
+## 5. Flip Booleans With a Bitwise XOR
+
+```js
+let flag = 1;
+flag ^= 1;
+console.log(flag); // 0
+```
+
+Elegant for toggling between binary states (`0 ↔ 1`) in game loops, UI components, or memory-sensitive applications.
+
+---
+
+## 6. Swap Two Variables Without a Temp
+
+```js
+let a = 5,
+  b = 10;
+[a, b] = [b, a];
+```
+
+Modern JavaScript makes swapping variables clean and readable.
+
+---
+
+## 7. Short-Circuit Defaulting
+
+```js
+function greet(user) {
+  const name = user?.name || "Guest";
+  console.log(`Hello, ${name}`);
+}
+```
+
+Safe, concise, and expressive—this is a standard pattern for dealing with optional values or nulls.
+
+---
+
+## 8. Reverse a String the Clever Way
+
+```js
+const reversed = (str) => [...str].reverse().join("");
+console.log(reversed("hello")); // "olleh"
+```
+
+Spread syntax works on strings too—no need for verbose `for` loops.
+
+---
+
+## 9. Conditional Property Inclusion in Objects
+
+```js
+const isAdmin = true;
+const user = {
+  name: "Sam",
+  ...(isAdmin && { role: "admin" }),
+};
+```
+
+Create dynamic, conditionally extended objects—great for building JSON payloads or config maps.
+
+---
+
+## 10. Shorthand for Nullish Values
+
+```js
+const foo = null ?? "default";
+console.log(foo); // "default"
+```
+
+Unlike `||`, `??` won’t override `0` or `false`—only `null` and `undefined`.
+
+---
+
+## Final Thoughts
+
+These aren’t just “cool tricks”—they’re **micro-optimizations and clean code techniques** that help write expressive, modern, and maintainable code. Whether you're building apps, APIs, or experimenting with side projects, these hacks are worth memorizing and sharing with your team.
+
+---
+
+## Want More Like This?
+
+Follow me for deeper dives into front-end patterns, performance tuning, and real-world developer workflows. Or [contribute your own hack](mailto:bobirrahmatof@gmail.com) and I'll feature it in the next post!
