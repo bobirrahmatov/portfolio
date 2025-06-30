@@ -4,7 +4,6 @@ export const PROJECTS = [
   {
     title: "OnT Agency: Innovating Operations and Tech",
     href: "",
-    // dates: "Mar 2024 - May 2024",
     featured: true,
     active: true,
     description:
@@ -35,13 +34,41 @@ export const PROJECTS = [
     video: "",
   },
   {
+    title: "My Data Hub – Identity Fraud Management Platform",
+    href: "https://mydatahub-marketing.vercel.app/landing",
+    featured: true,
+    active: false,
+    description:
+      "My Data Hub is a secure and intuitive identity fraud management platform. The marketing landing page highlights key features, trust signals, and value propositions for early adopters, designed to attract users and convert waitlist sign-ups.",
+    technologies: [
+      "Next.js",
+      "Typescript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Vercel",
+      "Framer Motion",
+    ],
+    links: [
+      {
+        type: "Website",
+        href: "https://mydatahub-marketing.vercel.app/landing",
+        icon: <Icons.globe className="size-3" />,
+      },
+      {
+        type: "Source",
+        href: "https://github.com/",
+        icon: <Icons.github className="size-3" />,
+      },
+    ],
+    image: "https://firebasestorage.googleapis.com/v0/b/portfolio-e69c5.firebasestorage.app/o/mydatahub.png?alt=media&token=dc9202bb-b0e9-43cf-9c9e-21fc8440cc2c",
+    video: "",
+  },
+  {
     title: "",
-    // href: "https://github.com/SkidGod4444/TeleGram-Member-Adder",
     dates: "",
     featured: false,
     archived: true,
-    description:
-      "",
+    description: "",
     technologies: [],
     links: [
       {
